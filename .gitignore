@@ -1,0 +1,4 @@
+.vscode
+cm_servers.json
+*.bin
+*.env
