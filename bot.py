@@ -12,6 +12,7 @@ from gevent import sleep
 USERNAME = os.environ.get("USERNAME")
 PASSWORD = os.environ.get("PASSWORD")
 SHARED_SECRET = os.environ.get("SHARED_SECRET")
+REDIS_URI = os.environ.get("REDIS_URI")
 
 app_ids = [
         221410, # Steam for Linux
@@ -22,7 +23,7 @@ app_ids = [
         480, # Spacewar
     ]
 
-redis = redis.Redis(host='localhost', port=6379, db=0)
+redis = redis.Redis.from_url(REDIS_URI)
 
 client = SteamClient()
 client.set_credential_location(".")
