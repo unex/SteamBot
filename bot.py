@@ -41,8 +41,15 @@ class SharedLibrary:
         self.get()
 
     def get(self):
-        self.friend = int(redis.get("steambot_friend").decode('utf-8'))
-        self.game = int(redis.get("steambot_game").decode('utf-8'))
+        try:
+            self.friend = int(redis.get("steambot_friend").decode('utf-8'))
+        except AttributeError:
+            self.friend = 0
+
+        try:
+            self.game = int(redis.get("steambot_game").decode('utf-8'))
+        except AttributeError:
+            self.game = 0
 
         print(f'SharedLibrary {self.friend=} {self.game=}')
 
