@@ -1,0 +1,17 @@
+version: "3"
+services:
+    redis:
+        image: redis:latest
+        restart: unless-stopped
+
+    app:
+        build:
+            dockerfile: Dockerfile
+            context: .
+        environment:
+            PYTHONUNBUFFERED: 1
+        env_file:
+            - .env
+        depends_on:
+            - redis
+        restart: unless-stopped
