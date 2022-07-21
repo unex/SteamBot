@@ -10,8 +10,10 @@ services:
             context: .
         environment:
             PYTHONUNBUFFERED: 1
-        env_file:
-            - .env
+            USERNAME: ${STEAM_USERNAME}
+            PASSWORD: ${STEAM_PASSWORD}
+            SHARED_SECRET: ${STEAM_SHARED_SECRET}
+            REDIS_URI: ${REDIS_URI}
         depends_on:
             - redis
         restart: unless-stopped
