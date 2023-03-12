@@ -14,10 +14,6 @@ PASSWORD = os.environ.get("PASSWORD")
 SHARED_SECRET = os.environ.get("SHARED_SECRET")
 REDIS_URI = os.environ.get("REDIS_URI")
 
-print(USERNAME)
-print(PASSWORD)
-print(SHARED_SECRET)
-
 app_ids = [
         221410, # Steam for Linux
         753, # Steam
