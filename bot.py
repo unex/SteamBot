@@ -89,6 +89,8 @@ def handle_disconnect():
 
     if client.relogin_available:
         client.reconnect(maxdelay=30)
+    else:
+        login()
 
 @client.on("logged_on")
 def handle_after_logon():
@@ -133,13 +135,16 @@ def handle_persona_state(msg):
             client.games_played(app_ids)
             break
 
-try:
+def login():
     two_factor_code = generate_twofactor_code(base64.b64decode(SHARED_SECRET))
-    result = client.login(USERNAME, PASSWORD, None, None, two_factor_code)
+    result = client.login(USERNAME, password=PASSWORD, two_factor_code=two_factor_code)
 
     if result != EResult.OK:
         print(f'Failed to login: {repr(result)}')
         raise SystemExit
+
+try:
+    login()
 
     client.run_forever()
 
