@@ -21,6 +21,10 @@ app_ids = [
         250820, # SteamVR
         8, # winui2
         480, # Spacewar
+        1948450, # Sex Chess
+        1202690, # Sex_with_the_Devil
+        1085750, # Sex_with_Stalin
+        726360, # BOOBS_SAGA_Prepare_To_Hentai_Edition
     ]
 
 redis = redis.Redis.from_url(REDIS_URI)
